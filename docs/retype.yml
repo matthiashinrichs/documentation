@@ -3,6 +3,15 @@ output: .retype
 url: http://meine-doku.hnrx.local
 server:
   host: 0.0.0.0:5005
+search:
+  placeholder: Suche
+  noResultsFoundMsg: Sorry, leider nichts gefunden.
+  minChars: 3
+edit:
+  repo: "https://github.com/matthiashinrichs/documentation/"
+  base: /docs
+  branch: master
+  label: Edit on GitHub
 branding:
   title: Dokumentationen
   label: v0.0.1
