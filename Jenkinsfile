@@ -7,6 +7,7 @@ pipeline {
                 docker {
                     image 'node:14-alpine'
                     args '-v docs:/srv'
+                    reuseNode true
                 }
             }
             steps {
