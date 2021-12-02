@@ -21,7 +21,9 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                docker.withRegistry('https://registry.hnrx.de') {
+                    def customImage = docker.build("documentation-app:${env.BUILD_ID}")
+                }
             }
         }
         stage('Deploy') {
