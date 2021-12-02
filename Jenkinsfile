@@ -5,8 +5,8 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image 'node:14-alpine'
-                    args '-v docs:/srv'
+                    image 'node:17'
+                    args '-v $HOME:/srv'
                     reuseNode true
                 }
             }
@@ -14,6 +14,9 @@ pipeline {
                 echo 'Building..'
                 sh 'node --version'
                 sh 'ls /srv'
+                sh 'ls'
+                sh 'pwd'
+                sh 'npm install retypeapp --global'
             }
         }
         stage('Test') {
