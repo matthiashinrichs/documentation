@@ -21,7 +21,6 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'cat /etc/os-release'
                 script {
                     docker.withRegistry('https://registry.hnrx.de', 'portus_token') {
                         def dockerImage = docker.build("documentation_app:${env.BUILD_ID}")
@@ -36,8 +35,7 @@ pipeline {
                 echo 'Deploying....'
                 sh 'git clone git@github.com:matthiashinrichs/my-kubenetes-apps.git'
                 dir('my-kubenetes-apps/documentation-app') {
-                    sh 'ls -al'
-                    sh "sed -i 's/image: .*\$/image: registry.hnrx.de/documentation_app:33/g' deployment.yaml"
+                    sh "sed -i \'s/image: .*\$/image: registry.hnrx.de/documentation_app:${env.BUILD_ID}/g\' deployment.yaml"
                     sh 'git commit -am "updated container version to ${env.BUILD_ID}"'
                     sh 'git push'
                 }
