@@ -17,9 +17,10 @@ pipeline {
                 echo 'Building..'
                 sh 'ls'
                 sh 'pwd'
-                sh 'touch mytestfile'
-                sh 'ls /root'
+                sh 'touch /root/docs/mytestfile'
+                sh 'ls /root/docs'
                 sh 'npm install retypeapp --global'
+                sh 'cd /root/docs'
                 sh 'retype build $HOME/docs'
             }
         }
