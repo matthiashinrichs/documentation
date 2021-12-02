@@ -4,6 +4,7 @@ metadata:
   name: documentation-app-deployment
   labels:
     app: documentation-app
+  namespace: documentation-app
 spec:
   replicas: 2
   selector:
