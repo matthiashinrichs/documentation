@@ -1,0 +1,13 @@
+input: .
+output: .retype
+url: http://meine-doku.hnrx.local
+server:
+  host: 0.0.0.0:5005
+branding:
+  title: Dokumentationen
+  label: v0.0.1
+links:
+- text: Blog
+  link: https://hnrx.de/
+footer:
+  copyright: "&copy; Copyright {{ year }}. All rights reserved."

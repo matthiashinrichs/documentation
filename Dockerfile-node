@@ -1,0 +1,15 @@
+FROM node:17
+
+RUN mkdir /app
+
+WORKDIR /app
+
+RUN npm install retypeapp --global
+
+EXPOSE 5005
+
+COPY docs/ .
+
+RUN retype build .
+
+CMD ["/usr/local/bin/retype", "run"]
