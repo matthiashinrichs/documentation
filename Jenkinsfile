@@ -9,7 +9,7 @@ pipeline {
             agent {
                 docker {
                     image 'node:17'
-                    args '-v $HOME/docs:/root/docs'
+                    args '-v $WORKSPACE/docs:/root/docs'
                     reuseNode true
                 }
             }
@@ -21,7 +21,7 @@ pipeline {
                 sh 'ls /root/docs'
                 sh 'npm install retypeapp --global'
                 sh 'cd /root/docs'
-                sh 'retype build $HOME/docs'
+                sh 'retype build /root/docs'
             }
         }
         stage('Test') {
