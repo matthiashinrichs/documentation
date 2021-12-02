@@ -12,5 +12,5 @@ spec:
               service:
                 name: documentation-app
                 port:
-                  number: 5005
+                  number: 80
             pathType: ImplementationSpecific

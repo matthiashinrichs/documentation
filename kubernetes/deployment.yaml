@@ -19,6 +19,6 @@ spec:
       - name: documentation-app
         image: registry.hnrx.de/documentation_app:latest
         ports:
-        - containerPort: 5005
+        - containerPort: 80
 
 
