@@ -1,4 +1,7 @@
 pipeline {
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
+    }
     agent any
 
     stages {
@@ -6,6 +9,7 @@ pipeline {
             agent {
                 docker {
                     image 'node:17'
+                    args '-v $HOME/docs:/root/docs'
                     reuseNode true
                 }
             }
@@ -14,6 +18,7 @@ pipeline {
                 sh 'ls'
                 sh 'pwd'
                 sh 'touch mytestfile'
+                sh 'ls /root'
                 sh 'npm install retypeapp --global'
                 sh 'retype build $HOME/docs'
             }
