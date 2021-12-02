@@ -35,9 +35,11 @@ pipeline {
                 echo 'Deploying....'
                 sh 'git clone git@github.com:matthiashinrichs/my-kubenetes-apps.git'
                 dir('my-kubenetes-apps/documentation-app') {
-                    sh "sed -i \'s/image: .*\$/image: registry.hnrx.de/documentation_app:${env.BUILD_ID}/g\' deployment.yaml"
-                    sh 'git commit -am "updated container version to ${env.BUILD_ID}"'
-                    sh 'git push'
+                    sh """#!/bin/bash
+                       sed -i 's|image: .*$|image: registry.hnrx.de/documentation_app:${env.BUILD_ID}|' deployment.yaml
+                       git commit -am "updated container version to ${env.BUILD_ID}"
+                       git push
+                       """
                 }
             }
         }
