@@ -22,6 +22,9 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'cat /etc/os-release'
+                script {
+                    def dockerImage = docker.build("documentation_app:${env.BUILD_ID}")
+                }
             }
         }
         stage('Deploy') {
