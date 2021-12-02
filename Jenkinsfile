@@ -37,7 +37,7 @@ pipeline {
                 sh 'git clone git@github.com:matthiashinrichs/my-kubenetes-apps.git'
                 dir(my-kubenetes-apps/documentation-app) {
                     sh 'ls -al'
-                    sh 'cat deployment.yaml | sed \'s/image: .*$/image: registry.hnrx.de\/documentation_app:${env.BUILD_ID}/g\' > deployment-new.yaml'
+                    sh 'cat deployment.yaml | sed \'s/image: .*$/image: registry.hnrx.de/documentation_app:${env.BUILD_ID}/g\' > deployment-new.yaml'
                     sh 'mv deployment-new.yaml deployment.yaml'
                     sh 'git commit -am "updated container version to ${env.BUILD_ID}"'
                     sh 'git push'
