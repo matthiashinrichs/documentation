@@ -23,7 +23,11 @@ pipeline {
             steps {
                 sh 'cat /etc/os-release'
                 script {
-                    def dockerImage = docker.build("documentation_app:${env.BUILD_ID}")
+                    docker.withRegistry('https://registry.hnrx.de', 'portus_token') {
+                        def dockerImage = docker.build("documentation_app:${env.BUILD_ID}")
+                        dockerImage.push(${env.BUILD_ID})
+                        dockerImage.push('latest')
+                    }
                 }
             }
         }
