@@ -37,7 +37,7 @@ pipeline {
                 dir('my-kubenetes-apps/documentation-app') {
                     sh "sed -i 's|image: .*\$|image: registry.hnrx.de/documentation_app:${env.BUILD_ID}|' deployment.yaml"
                     sh "git commit -am \"updated container version to ${env.BUILD_ID}\""
-                    sh "git push'
+                    sh "git push"
                 }
             }
         }
