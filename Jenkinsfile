@@ -20,16 +20,8 @@ pipeline {
             }
         }
         stage('Test') {
-            agent {
-                node {
-                    label 'docker'
-                }
-            }
             steps {
                 sh 'cat /etc/os-release'
-                docker.withRegistry('https://registry.hnrx.de') {
-                    def customImage = docker.build("documentation-app:${env.BUILD_ID}")
-                }
             }
         }
         stage('Deploy') {
