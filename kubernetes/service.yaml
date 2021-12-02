@@ -3,11 +3,9 @@ kind: Service
 metadata:
   name: documentation-app
   namespace: documentation-app
-  labels:
-    run: documentation-app
 spec:
   ports:
-  - port: 5005
-    protocol: TCP
+  - port: 80
+    targetPort: 5005
   selector:
-    run: documentation-app
+    app: documentation-app
