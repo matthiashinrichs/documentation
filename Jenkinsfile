@@ -6,17 +6,16 @@ pipeline {
             agent {
                 docker {
                     image 'node:17'
-                    args '-v $HOME:/srv'
                     reuseNode true
                 }
             }
             steps {
                 echo 'Building..'
                 sh 'node --version'
-                sh 'ls /srv'
                 sh 'ls'
                 sh 'pwd'
                 sh 'npm install retypeapp --global'
+                sh 'retype build docs'
             }
         }
         stage('Test') {
