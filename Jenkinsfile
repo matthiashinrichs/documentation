@@ -38,7 +38,7 @@ pipeline {
                     sh '''
                         sed -i 's|image: .*$|image: registry.hnrx.de/documentation_app:${env.BUILD_ID}|' deployment.yaml
                        '''
-                    sh 'git commit -am "updated container version to ${env.BUILD_ID}"'
+                    sh 'git commit -am "updated container version to newer version"'
                     sh 'git push'
                 }
             }
