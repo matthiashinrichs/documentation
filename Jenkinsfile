@@ -9,19 +9,14 @@ pipeline {
             agent {
                 docker {
                     image 'node:17'
-                    args '-v $WORKSPACE/docs:/root/docs'
                     reuseNode true
                 }
             }
             steps {
                 echo 'Building..'
-                sh 'ls'
-                sh 'pwd'
-                sh 'touch /root/docs/mytestfile'
-                sh 'ls /root/docs'
                 sh 'npm install retypeapp --global'
-                sh 'cd /root/docs'
-                sh 'retype build /root/docs'
+                sh 'retype build docs'
+                sh 'ls -lha docs/'
             }
         }
         stage('Test') {
