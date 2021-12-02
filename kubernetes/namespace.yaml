@@ -1,6 +1,6 @@
 kind: Namespace
 apiVersion: v1
 metadata:
-  name: documentation_app
+  name: documentation-app
   labels:
-    name: documentation_app
+    name: documentation-app
