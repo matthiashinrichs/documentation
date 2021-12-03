@@ -16,7 +16,6 @@ pipeline {
                 echo 'Building..'
                 sh 'npm install retypeapp --global'
                 sh 'retype build docs'
-                sh 'ls -lha docs/'
             }
         }
         stage('Test') {

@@ -14,7 +14,7 @@ edit:
   label: Edit on GitHub
 branding:
   title: Dokumentationen
-  label: v0.0.45
+  label: v0.0.{{ env.BUILD_ID }}
 links:
 - text: Blog
   link: https://hnrx.de/
