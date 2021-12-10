@@ -1,0 +1,45 @@
+site_name: Dokumentation
+site_url: https://example.com/
+repo_url: https://github.com/matthiashinrichs/documentation/
+remote_branch: master
+theme:
+  name: material
+  language: de
+  icon:
+    logo: material/code-not-equal-variant
+  palette:
+    - media: "(prefers-color-scheme: light)" 
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+      primary: light green
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+      primary: green
+  features:
+    - navigation.instant
+    - navigation.indexes
+
+markdown_extensions:
+  # make exceptions to highlighting of code:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid
+
+plugins:
+  - search
+  - mermaid2:
+      arguments:
+          # test if its __palette_1 (dark) or __palette_2 (light)
+        theme: |
+          ^(JSON.parse(window.localStorage.getItem(__prefix('__palette'))).index == 1) ? 'dark' : 'light'
+
+extra_javascript:
+    - https://unpkg.com/mermaid/dist/mermaid.min.js
+    - extra/refresh_on_toggle_dark_light.js

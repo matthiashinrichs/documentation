@@ -1,6 +1,6 @@
 input: .
 output: .retype
-url: http://meine-doku.hnrx.local
+url: http://documentation.k8s.hnrx.de
 server:
   host: 0.0.0.0:5005
 search:

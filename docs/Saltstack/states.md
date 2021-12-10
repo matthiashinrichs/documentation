@@ -10,7 +10,7 @@ States sind in YAML geschrieben. Die Dateiendung der State-Files ist .sls
 Die State Files liegen im sogenannten Salt-Fileroot-Verzeichnis, in der Regel ist dieses /srv/salt.
 States können direkt in diesem Verzeichnis ablegt werden. Es macht aber durchaus Sinn sie in Unterverzeichnissen zu organisieren.
 
-``` Beispiel Fileroot Verzeichnisstruktur 
+```  
 /srv/salt/
 ├── john.sls
 └── users
@@ -23,13 +23,13 @@ States können direkt in diesem Verzeichnis ablegt werden. Es macht aber durchau
 States können sowohl vom Master auf einen oder mehrere Minions gepusht werden als auch direkt vom Minion selbst auf diesem angewendet werden. Die States heissen wie ihr Dateiname (die Endung .sls entfällt). Die Unterverzeichnisse werden durch einen "." dargestellt.
 
 ### Vom Master aus (Push)
-```
+```shell
 salt '*' state.apply john
 salt '*' state.apply users.jane
 ```
 
 ### Direkt auf dem Minion (Pull)
-```
+```shell
 salt-call state.apply john
 salt-call state.apply users.jane
 ```
