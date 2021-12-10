@@ -5,20 +5,20 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Build Content') {
             agent {
                 docker {
-                    image 'node:17'
+                    image 'python:3.9-slim'
                     reuseNode true
                 }
             }
             steps {
                 echo 'Building..'
-                sh 'npm install retypeapp --global'
-                sh 'retype build docs'
+                sh 'pip install mkdocs-material mkdocs-mermaid2-plugin'
+                sh 'mkdocs build'
             }
         }
-        stage('Test') {
+        stage('Create Application') {
             steps {
                 script {
                     docker.withRegistry('https://registry.hnrx.de', 'portus_token') {
@@ -29,7 +29,7 @@ pipeline {
                 }
             }
         }
-        stage('Deploy') {
+        stage('Update Application Repo') {
             steps {
                 echo 'Deploying....'
                 sh 'git clone git@github.com:matthiashinrichs/my-kubenetes-apps.git'
