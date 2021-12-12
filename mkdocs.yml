@@ -26,6 +26,12 @@ theme:
     - navigation.indexes
 
 markdown_extensions:
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.highlight:
+      anchor_linenums: true
+      use_pygments: true
   # make exceptions to highlighting of code:
   - pymdownx.superfences:
       custom_fences:
