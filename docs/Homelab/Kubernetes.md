@@ -65,6 +65,40 @@ spec:
           kind: TraefikService
 ```
 
+## External DNS installieren
+
+
+
+
+## Rancher installieren
+```
+helm repo add rancher-latest https://releases.rancher.com/server-charts/latest
+kubectl create namespace cattle-system
+
+# Add the Jetstack Helm repository
+helm repo add jetstack https://charts.jetstack.io
+
+# Update your local Helm chart repository cache
+helm repo update
+
+# Install the cert-manager Helm chart
+helm install \
+  cert-manager jetstack/cert-manager \
+  --namespace cert-manager \
+  --create-namespace \
+  --version v1.6.1 \
+  --set installCRDs=true
+
+#kubectl wait
+
+# Finally install Rancher
+helm install rancher rancher-latest/rancher \
+  --namespace cattle-system \
+  --set hostname=rancher.k8s.homenet \
+  --set bootstrapPassword=admin 
+```
+
+
 ## Worker-Nodes
 **Worker-Nodes** zum Master hinzufügen:
 
